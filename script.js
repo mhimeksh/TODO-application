@@ -11,9 +11,10 @@ function render(){
         cnt++;
 
         let taskEl= document.createElement("div");
-
+        taskEl.setAttribute("class", "taskEl");
         let taskDescriptionSpan= document.createElement("span");
         taskDescriptionSpan.innerHTML= task;
+        taskDescriptionSpan.setAttribute("class", "taskDescEl");
         let deleteButton= document.createElement("button");
         deleteButton.setAttribute("id", cnt);
         deleteButton.innerHTML="-";
@@ -38,3 +39,11 @@ function deleteTask(id){
     tasksList.splice(id-1, 1);
     render();
 }
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" && event.target.id === "input-todo") {
+        addTask();
+        console.log("Enter key pressed");
+    }
+});
+
